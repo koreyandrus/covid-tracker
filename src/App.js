@@ -1,11 +1,25 @@
-import React from 'react'
+import React from 'react';
 
-const App = () => {
-    return (
-        <div>
-            <h1>App</h1>
-        </div>
-    )
+import { Cards, Chart, CountryPicker } from './components';
+import { fetchData } from './api';
+
+import styles from './App.module.css';
+
+class App extends React.Component {
+    async componentDidMount() {
+        const data = await fetchData();
+
+        console.log(data);
+    }
+    render() {
+        return (
+            <div className={styles.container}>
+                <Cards />
+                <CountryPicker />
+                <Chart />
+            </div>
+        );
+    }
 }
 
 export default App;
